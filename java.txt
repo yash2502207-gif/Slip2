@@ -1,0 +1,138 @@
+Q1) CORE JAVA - ACCOUNT, SAVINGACCOUNT, ACCOUNTDETAIL
+(15 Marks)
+
+Save as: AccountDetail.java
+
+class Account {
+    String custname;
+    int accno;
+
+    // Default constructor
+    Account() {
+        custname = "Unknown";
+        accno = 0;
+    }
+
+    // Parameterized constructor
+    Account(String name, int number) {
+        custname = name;
+        accno = number;
+    }
+}
+
+class SavingAccount extends Account {
+    double savingbal;
+    double minbal;
+
+    // Default constructor
+    SavingAccount() {
+        super();
+        savingbal = 0;
+        minbal = 1000;
+    }
+
+    // Parameterized constructor
+    SavingAccount(String name, int number, double balance, double minimum) {
+        super(name, number);
+        savingbal = balance;
+        minbal = minimum;
+    }
+}
+
+class AccountDetail extends SavingAccount {
+    double depositamt;
+    double withdrawalamt;
+
+    AccountDetail(String name, int number, double balance, double minimum,
+                  double deposit, double withdrawal) {
+        super(name, number, balance, minimum);
+        depositamt = deposit;
+        withdrawalamt = withdrawal;
+    }
+
+    void display() {
+        System.out.println("Customer Name: " + custname);
+        System.out.println("Account Number: " + accno);
+        System.out.println("Saving Balance: " + savingbal);
+        System.out.println("Minimum Balance: " + minbal);
+        System.out.println("Deposit Amount: " + depositamt);
+        System.out.println("Withdrawal Amount: " + withdrawalamt);
+
+        savingbal = savingbal + depositamt;
+        if (savingbal - withdrawalamt >= minbal) {
+            savingbal = savingbal - withdrawalamt;
+            System.out.println("Final Balance: " + savingbal);
+        } else {
+            System.out.println("Withdrawal denied: minimum balance must be maintained.");
+            System.out.println("Balance after deposit: " + savingbal);
+        }
+    }
+
+    public static void main(String[] args) {
+        AccountDetail a = new AccountDetail(
+            "Yash", 12345, 5000, 1000, 2000, 1500
+        );
+        a.display();
+    }
+}
+
+
+Q2) WEB TECHNOLOGY - BUTTON AND LINK USING CSS :HOVER
+(15 Marks)
+
+Save as: index.html
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hover Button and Link</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f2f2f2;
+        }
+
+        button {
+            background-color: blue;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: green;
+            transform: scale(1.1);
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 25px;
+            color: blue;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        a:hover {
+            color: red;
+            text-decoration: underline;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h2>CSS Hover Example</h2>
+
+    <button type="button" onclick="alert('Button clicked!')">
+        Click Me
+    </button>
+
+    <br>
+
+    <a href="https://www.google.com" target="_blank">Open Google</a>
+</body>
+</html>
