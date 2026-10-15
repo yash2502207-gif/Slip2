@@ -1,0 +1,128 @@
+T.Y.B.Sc. (Computer Science) Practical Exam
+Subject: Foundation of Artificial Intelligence and Machine Learning
+Lab Course: CS-321-VSC-P
+
+Q1. Write a program to implement DFS traversal for a graph. (10 Marks)
+
+Program:
+graph = {
+    'A': ['B', 'C', 'E'],
+    'B': ['A', 'D'],
+    'C': ['A', 'F'],
+    'D': ['B', 'E'],
+    'E': ['A', 'D', 'F'],
+    'F': ['C', 'E']
+}
+
+visited = set()
+
+def dfs(node):
+    if node not in visited:
+        print(node, end=" ")
+        visited.add(node)
+        for neighbour in graph[node]:
+            dfs(neighbour)
+
+print("DFS Traversal:")
+dfs('A')
+
+Output:
+DFS Traversal:
+A B D E F C
+
+
+Q2 (Option 1). Implement a Non-Linear SVM using the RBF Kernel. (20 Marks)
+
+Program:
+from sklearn.svm import SVC
+
+X = [[1, 2], [2, 3], [5, 5]]
+y = [0, 0, 1]
+
+model = SVC(kernel='rbf')
+model.fit(X, y)
+
+test = [[4, 4]]
+result = model.predict(test)
+
+print("Predicted Class:", result[0])
+
+Expected output with default SVC parameters:
+Predicted Class: 1
+
+Explanation:
+- SVC() creates an SVM classifier.
+- kernel='rbf' selects the Radial Basis Function kernel.
+- fit() trains the model.
+- predict() predicts the class of the test input.
+
+
+Q2 (Option 2). Implement a Basic Artificial Neural Network (ANN). (20 Marks)
+
+Program:
+from sklearn.neural_network import MLPClassifier
+
+X = [
+    [3, 1.5],
+    [2, 1],
+    [4, 1.5],
+    [3, 4],
+    [3.5, 0.5],
+    [2, 0.5],
+    [5.5, 1],
+    [1, 1]
+]
+
+y = [0, 1, 0, 1, 0, 1, 1, 0]
+
+model = MLPClassifier(
+    hidden_layer_sizes=(5,),
+    learning_rate_init=0.1,
+    max_iter=2000,
+    random_state=42
+)
+
+model.fit(X, y)
+predictions = model.predict(X)
+
+print("Actual Output:", y)
+print("Predicted Output:", predictions)
+
+Note:
+- hidden_layer_sizes=(5,) specifies one hidden layer with five neurons.
+- learning_rate_init=0.1 sets the learning rate.
+- max_iter=2000 sets the maximum number of training iterations.
+- fit() trains the network; predict() generates predictions.
+- The question asks you to try different learning rates and epoch/iteration values and compare results.
+
+VIVA QUESTIONS AND ANSWERS
+
+1. What is Artificial Intelligence (AI)?
+AI enables machines to perform tasks that normally require human intelligence.
+
+2. What is Machine Learning (ML)?
+Machine Learning allows computers to learn from data and make predictions.
+
+3. What is DFS?
+DFS stands for Depth-First Search. It explores a graph by visiting a node and then its unvisited neighbours.
+
+4. What is SVM?
+SVM stands for Support Vector Machine. It is a supervised learning algorithm used for classification and regression.
+
+5. What is an RBF kernel?
+RBF stands for Radial Basis Function. It helps SVM classify data that is not linearly separable.
+
+6. What is ANN?
+ANN stands for Artificial Neural Network. It is inspired by the structure of the human brain.
+
+7. What is a learning rate?
+The learning rate controls how much the model updates its parameters during training.
+
+8. What is an epoch?
+An epoch is one complete pass through the training dataset.
+
+9. What is a training dataset?
+A training dataset is the data used to train a machine learning model.
+
+10. What is prediction?
+Prediction uses a trained model to estimate an output for given input data.
